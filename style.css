@@ -1,0 +1,19 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+.table{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: aliceblue;
+    width: 600px;
+    height: 600px;
+}
+.table section{
+    width: 198px;
+    height: 198px;
+    border: 1px solid black
+}
