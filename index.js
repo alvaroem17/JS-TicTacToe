@@ -2,14 +2,24 @@ let board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
 let player = "x"
 let win = 0
 //Casillas
+const casilla0_0 = document.getElementById("primera")
+const casilla0_1 = document.getElementById("segunda")
+const casilla0_2 = document.getElementById("tercera")
+const casilla1_0 = document.getElementById("cuarta")
+const casilla1_1 = document.getElementById("quinta")
+const casilla1_2 = document.getElementById("sexta")
+const casilla2_0 = document.getElementById("septima")
+const casilla2_1 = document.getElementById("octava")
+const casilla2_2 = document.getElementById("novena")
 
 
 const show = () => {
     console.log(board)
 }
-const play = (x, y) => {
+const play = (x, y, casilla) => {
     if(check(x,y)){
         board[x][y] = player
+        updateTable(casilla, player)
         player = player === "x" ? "o" : "x"
     }
 }
@@ -47,12 +57,21 @@ const winner = () => {
         win = 1
     }
 }
+const updateTable = (elem, player) => {
+    if(player === "x"){
+        elem.style.background.image = url("img/Red_X.svg.png")
+    }else {
+        elem.style.background.image = url("img/o.png")
+    }
+}
+
 const juego = () => {
     while(win != 1){
-        show()
-        let posx = prompt(`Introduce la primera posición jugador ${player}: `)
-        let posy = prompt(`Introduce la segunda posición jugador ${player}: `)
-        play(parseInt(posx, 10), parseInt(posy, 10))
+        //show()
+        /*let posx = prompt(`Introduce la primera posición jugador ${player}: `)
+        let posy = prompt(`Introduce la segunda posición jugador ${player}: `)*/    
+        casilla0_0.addEventListener('click',play(0,0,casilla0_0),false)
+        //play(parseInt(posx, 10), parseInt(posy, 10))
         winner()
     }
 }
