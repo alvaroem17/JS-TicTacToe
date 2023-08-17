@@ -12,7 +12,6 @@ const casilla2_0 = document.getElementById("septima")
 const casilla2_1 = document.getElementById("octava")
 const casilla2_2 = document.getElementById("novena")
 
-
 const show = () => {
     console.log(board)
 }
@@ -59,20 +58,23 @@ const winner = () => {
 }
 const updateTable = (elem, player) => {
     if(player === "x"){
-        elem.style.background.image = url("img/Red_X.svg.png")
+        elem.style.background = "red";//url("img/Red_X.svg.png")
     }else {
-        elem.style.background.image = url("img/o.png")
+        elem.style.background = "black";//url("img/o.png")
     }
 }
 
 const juego = () => {
+    document.getElementById("start").hidden = true
     while(win != 1){
-        //show()
-        /*let posx = prompt(`Introduce la primera posición jugador ${player}: `)
-        let posy = prompt(`Introduce la segunda posición jugador ${player}: `)*/    
-        casilla0_0.addEventListener('click',play(0,0,casilla0_0),false)
-        //play(parseInt(posx, 10), parseInt(posy, 10))
+        casilla0_0.addEventListener('click', function(){play(0, 0, casilla0_0);}, true)
+        casilla0_1.addEventListener('click', function(){play(0, 1, casilla0_1);}, true)
+        casilla1_0.addEventListener('click', function(){play(1, 0, casilla1_0);}, true)
+        casilla1_1.addEventListener('click', function(){play(1, 1, casilla1_1);}, true)
+        casilla1_2.addEventListener('click', function(){play(1, 2, casilla1_2);}, true)
+        casilla2_0.addEventListener('click', function(){play(2, 0, casilla2_0);}, true)
+        casilla2_1.addEventListener('click', function(){play(2, 1, casilla2_1);}, true)
+        casilla2_2.addEventListener('click', function(){play(2, 2, casilla2_2);}, true)
         winner()
     }
 }
-juego()
