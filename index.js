@@ -1,16 +1,26 @@
 let board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
 let player = "x"
-let win = 0
+let count = 0
 //Casillas
 const casillas = document.querySelectorAll(".table section")
 
 const show = () => {
     console.log(board)
 }
+const clear = () => {
+    board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
+    count = 0
+    casillas.forEach(casilla => {
+        casilla.style.background = "aliceblue";
+    })
+}
 const play = (x, y, casilla) => {
     if(check(x,y)){
         board[x][y] = player
+        count++
         winner()
+        if(count === 9){
+        }
         player = player === "x" ? "o" : "x"
     }
 }
@@ -50,9 +60,9 @@ const winner = () => {
 }
 const updateTable = (elem, player) => {
     if(player === "x"){
-        elem.style.background = "red";//url("img/Red_X.svg.png")
+        elem.style.background = "red"//"img/Red_X.svg.png";
     }else {
-        elem.style.background = "black";//url("img/o.png")
+        elem.style.background = "black"//"img/o.png";
     }
 }
 
@@ -106,26 +116,6 @@ casillas.forEach(casilla => {
 
 document.getElementById("start").addEventListener('click', () => {
     document.getElementById("start").hidden = true;
+    document.getElementById("clear").hidden = false;
 });
-
-if(win === 1){
-    document.getElementById("start").hidden = true;
-    casillas.forEach(casilla => {
-        casilla.style.background = "aliceblue";
-    })
-}
-/*
-const juego = () => {
-    document.getElementById("start").hidden = true
-    while(win != 1){
-        casilla0_0.addEventListener('click', function(){play(0, 0, casilla0_0);}, true)
-        casilla0_1.addEventListener('click', function(){play(0, 1, casilla0_1);}, true)
-        casilla1_0.addEventListener('click', function(){play(1, 0, casilla1_0);}, true)
-        casilla1_1.addEventListener('click', function(){play(1, 1, casilla1_1);}, true)
-        casilla1_2.addEventListener('click', function(){play(1, 2, casilla1_2);}, true)
-        casilla2_0.addEventListener('click', function(){play(2, 0, casilla2_0);}, true)
-        casilla2_1.addEventListener('click', function(){play(2, 1, casilla2_1);}, true)
-        casilla2_2.addEventListener('click', function(){play(2, 2, casilla2_2);}, true)
-        winner()
-    }
-}*/
+document.getElementById("clear").addEventListener('click', () => { clear(); });
