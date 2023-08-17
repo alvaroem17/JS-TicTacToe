@@ -2,15 +2,7 @@ let board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
 let player = "x"
 let win = 0
 //Casillas
-const casilla0_0 = document.getElementById("primera")
-const casilla0_1 = document.getElementById("segunda")
-const casilla0_2 = document.getElementById("tercera")
-const casilla1_0 = document.getElementById("cuarta")
-const casilla1_1 = document.getElementById("quinta")
-const casilla1_2 = document.getElementById("sexta")
-const casilla2_0 = document.getElementById("septima")
-const casilla2_1 = document.getElementById("octava")
-const casilla2_2 = document.getElementById("novena")
+const casillas = document.querySelectorAll(".table section")
 
 const show = () => {
     console.log(board)
@@ -18,7 +10,7 @@ const show = () => {
 const play = (x, y, casilla) => {
     if(check(x,y)){
         board[x][y] = player
-        updateTable(casilla, player)
+        winner()
         player = player === "x" ? "o" : "x"
     }
 }
@@ -64,6 +56,65 @@ const updateTable = (elem, player) => {
     }
 }
 
+casillas.forEach(casilla => {
+    casilla.addEventListener('click', () => {
+        let x 
+        let y
+        console.log(casilla.id)
+        updateTable(casilla, player)
+        switch(casilla.id) {
+            case 'primera':
+                x = 0
+                y = 0
+                break;
+            case 'segunda':
+                x = 0
+                y = 1
+                break;
+            case 'tercera':
+                x = 0
+                y = 2
+                break;
+            case 'cuarta':
+                x = 1
+                y = 0
+                break;
+            case 'quinta':
+                x = 1
+                y = 1
+                break;
+            case 'sexta':
+                x = 1
+                y = 2
+                break;
+            case 'septima':
+                x = 2
+                y = 0
+                break;
+            case 'octava':
+                x = 2
+                y = 1
+                break;
+            case 'novena':
+                x = 2
+                y = 2
+                break;
+        }
+        play(x, y, casilla.id);
+    });
+});
+
+document.getElementById("start").addEventListener('click', () => {
+    document.getElementById("start").hidden = true;
+});
+
+if(win === 1){
+    document.getElementById("start").hidden = true;
+    casillas.forEach(casilla => {
+        casilla.style.background = "aliceblue";
+    })
+}
+/*
 const juego = () => {
     document.getElementById("start").hidden = true
     while(win != 1){
@@ -77,4 +128,4 @@ const juego = () => {
         casilla2_2.addEventListener('click', function(){play(2, 2, casilla2_2);}, true)
         winner()
     }
-}
+}*/
