@@ -1,8 +1,9 @@
 let board = [['-', '-', '-'], ['-', '-', '-'], ['-', '-', '-']]
 let player = "x"
 let count = 9
+let message = ""
 //Casillas
-const casillas = document.querySelectorAll(".table section")
+const casillas = document.querySelectorAll("#tabla section")
 
 const show = () => {
     console.log(board)
@@ -20,6 +21,13 @@ const play = (x, y, casilla) => {
         count++
         winner()
         updateTable(casilla, player)
+        if(count === 9){
+            document.getElementById("modalWin").classList.remove("hidden")
+            document.getElementById("modalWin").classList.add("onScreen")
+            document.getElementById("winnerText").innerHTML = message;
+            document.getElementById("tabla").classList.remove("onScreen")
+            document.getElementById("tabla").classList.add("hidden")
+        }
         player = player === "x" ? "o" : "x"
     }
 }
@@ -34,34 +42,42 @@ const winner = () => {
     if (board[0][0] === board[0][1] && board[0][0] === board[0][2] && board[0][0] !== '-'){
         console.log(`The winner is ${board[0][0]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[0][0]}`
         return true
     } else if (board[1][0] === board[1][1] && board[1][0] === board[1][2] && board[1][0] !== '-') {
         console.log(`The winner is ${board[1][0]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[1][0]}`
         return true
     } else if (board[2][0] === board[2][1] && board[2][0] === board[2][2] && board[2][0] !== '-') {
         console.log(`The winner is ${board[2][0]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[2][0]}`
         return true
     } else if (board[0][0] === board[1][0] && board[0][0] === board[2][0] && board[0][0] !== '-') {
         console.log(`The winner is ${board[0][0]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[0][0]}`
         return true
     } else if (board[0][1] === board[1][1] && board[0][1] === board[2][1] && board[0][1] !== '-') {
         console.log(`The winner is ${board[0][1]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[0][1]}`
         return true
     } else if (board[0][2] === board[1][2] && board[0][2] === board[2][2] && board[0][2] !== '-') {
         console.log(`The winner is ${board[0][2]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[0][2]}`
         return true
     } else if (board[0][0] === board[1][1] && board[0][0] === board[2][2] && board[0][0] !== '-') {
         console.log(`The winner is ${board[0][0]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[0][0]}`
         return true
     } else if (board[0][2] === board[1][1] && board[0][2] === board[2][0] && board[0][2] !== '-') {
         console.log(`The winner is ${board[0][2]}`)
         count = 9
+        message = `Ha ganado el jugador de las ${board[0][2]}`
         return true
     }else{
         return false
@@ -130,7 +146,11 @@ casillas.forEach(casilla => {
 
 document.getElementById("start").addEventListener('click', () => {
     document.getElementById("start").hidden = true;
-    document.getElementById("clear").hidden = false;
     clear()
 });
-document.getElementById("clear").addEventListener('click', () => { clear(); });
+document.getElementById("clear").addEventListener('click', () => { clear();
+    document.getElementById("tabla").classList.remove("hidden")
+    document.getElementById("tabla").classList.add("onScreen")
+    document.getElementById("modalWin").classList.remove("onScreen")
+    document.getElementById("modalWin").classList.add("hidden")
+});

@@ -11,7 +11,7 @@ body{
 /*h1{
     color: white;
 }*/
-.table{
+#tabla{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -20,8 +20,9 @@ body{
     background: linear-gradient(160deg, rgba(87,55,218,1) 0%, rgba(8,8,231,1) 32%, rgba(19,139,163,1) 100%);*/
     width: 600px;
     height: 600px;
+    z-index: 1;
 }
-.table section{
+#tabla section{
     width: 198px;
     height: 198px;
     border: 1px solid black;
@@ -30,4 +31,25 @@ body{
 }
 button {
     margin: 2rem 0;
+}
+#modalWin{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 40%;
+    height: 300px;
+    box-shadow: 2px 2px 4px rgb(63, 62, 62);
+    background: aliceblue;
+    top: 5rem;
+    z-index: 2;
+}
+#clear{
+    width: 30%;
+}
+.hidden{
+    visibility: hidden;
+}
+.onScreen{
+    visibility: visible;
 }
