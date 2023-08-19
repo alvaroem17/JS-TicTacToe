@@ -1,14 +1,23 @@
+html{
+    width: 100vw;
+    height: 100vh;
+}
 body{
     display: flex;
     flex-direction: column;
     justify-items: center;
     align-items: center;
 }
+/*h1{
+    color: white;
+}*/
 .table{
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    background-color: aliceblue;
+    background: aliceblue;
+    /*background: rgb(87,55,218);
+    background: linear-gradient(160deg, rgba(87,55,218,1) 0%, rgba(8,8,231,1) 32%, rgba(19,139,163,1) 100%);*/
     width: 600px;
     height: 600px;
 }
@@ -16,4 +25,9 @@ body{
     width: 198px;
     height: 198px;
     border: 1px solid black;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+button {
+    margin: 2rem 0;
 }
