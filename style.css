@@ -1,6 +1,6 @@
 html{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 body{
     display: flex;
@@ -16,8 +16,6 @@ body{
     flex-direction: column;
     flex-wrap: wrap;
     background: aliceblue;
-    /*background: rgb(87,55,218);
-    background: linear-gradient(160deg, rgba(87,55,218,1) 0%, rgba(8,8,231,1) 32%, rgba(19,139,163,1) 100%);*/
     width: 600px;
     height: 600px;
     z-index: 1;
@@ -41,7 +39,9 @@ button {
     height: 300px;
     box-shadow: 2px 2px 4px rgb(63, 62, 62);
     background: aliceblue;
-    top: 5rem;
+    justify-items: flex-start;
+    position: fixed;
+    top: 10rem;
     z-index: 2;
 }
 #clear{
