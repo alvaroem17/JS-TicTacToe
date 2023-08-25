@@ -22,12 +22,8 @@ const play = (x, y, casilla) => {
         winner()
         updateTable(casilla, player)
         if(count === 9){
-            //document.getElementById("modalWin").classList.remove("hidden")
-            //document.getElementById("modalWin").classList.add("onScreen")
             document.getElementById("modalWin").setAttribute("class", "onScreen")
             document.getElementById("winnerText").innerHTML = message;
-            //document.getElementById("tabla").classList.remove("onScreen")
-            //document.getElementById("tabla").classList.add("hidden")
             document.getElementById("tabla").setAttribute("class", "hidden")
         }
         player = player === "x" ? "o" : "x"
