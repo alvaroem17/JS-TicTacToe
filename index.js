@@ -151,8 +151,6 @@ document.getElementById("start").addEventListener('click', () => {
     clear()
 });
 document.getElementById("clear").addEventListener('click', () => { clear();
-    document.getElementById("tabla").classList.remove("hidden")
-    document.getElementById("tabla").classList.add("onScreen")
-    document.getElementById("modalWin").classList.remove("onScreen")
-    document.getElementById("modalWin").classList.add("hidden")
+    document.getElementById("modalWin").setAttribute("class", "hidden")
+    document.getElementById("tabla").setAttribute("class", "onScreen")
 });
